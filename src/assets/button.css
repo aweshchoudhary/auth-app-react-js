@@ -1,0 +1,30 @@
+.custom-btn {
+  /* background: transparent; */
+  transition: all 0.3s ease;
+  position: relative;
+}
+/* primary */
+.btn-primary {
+  border: none;
+  z-index: 1;
+}
+.btn-primary:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  border-radius: 5px;
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+.btn-primary:hover:after {
+  left: 0;
+  width: 100%;
+}
+.btn-primary:active {
+  top: 2px;
+}
