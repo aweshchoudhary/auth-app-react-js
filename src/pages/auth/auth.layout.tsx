@@ -13,9 +13,7 @@ const Layout = ({ children }: Props) => {
         <AnimatedBackground />
       </div>
       <div className="flex-auto md:p-20 sm:p-10 p-5 flex items-center min-h-screen overflow-auto">
-        <PageTransition>
-          <div className="w-full">{children}</div>
-        </PageTransition>
+        <PageTransition>{children}</PageTransition>
       </div>
     </section>
   );
