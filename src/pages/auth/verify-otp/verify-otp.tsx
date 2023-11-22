@@ -4,8 +4,6 @@ import { verifyOtpValues, verifyOtpSchema, VerifyOtpInterface } from "./utils";
 import { Button } from "@/components/ui/button";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
-import { Icon } from "@iconify/react/dist/iconify.js";
-import { motion } from "framer-motion";
 import {
   useGetOtpQuery,
   useVerifyOtpMutation,
