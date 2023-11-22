@@ -1,7 +1,11 @@
 const AnimatedBackground = () => {
   return (
     <div id="bg-wrap">
-      <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
+      <svg
+        className="lg:w-auto w-screen lg:h-screen h-[300px]"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="xMidYMid slice"
+      >
         <defs>
           <radialGradient
             id="Gradient1"
