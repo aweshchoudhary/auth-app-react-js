@@ -8,14 +8,12 @@ function App() {
   return (
     <Provider store={store}>
       <ToastContainer
-        position="bottom-left"
-        autoClose={5000}
-        newestOnTop
+        position="top-right"
+        autoClose={3000}
+        newestOnTop={true}
         closeOnClick
-        pauseOnFocusLoss
         draggable
-        pauseOnHover
-        theme="light"
+        theme="colored"
       />
       <AppRouter />
     </Provider>
