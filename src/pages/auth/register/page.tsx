@@ -11,6 +11,7 @@ import { RegisterReqData } from "@/types/types";
 import SuccessModal from "./success.modal";
 import ErrorMessage from "../_components/error-message";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import PageTransition from "@/components/global/page.transition";
 
 const Register = () => {
   const [registerUser, { isLoading, isSuccess, isError, error, data }] =
@@ -51,101 +52,107 @@ const Register = () => {
     }
   }, [isSuccess, isError]);
 
-  return isSuccess ? (
-    <SuccessModal email={data?.email ?? "test@gmail.com"} />
-  ) : (
-    <div className="w-full space-y-10">
-      <div>
-        <h1 className="text-3xl font-semibold text-primary">
-          Create a new Account
-        </h1>
-        <p className="text-gray-500 mt-2">Enter your details for new account</p>
-      </div>
-      {isError ? <ErrorMessage message={errMessage} /> : null}
-      <Formik
-        initialValues={newUserInitalValues}
-        validationSchema={newUserSchema}
-        onSubmit={(values: NewUserInterface) => handleSubmit(values)}
-      >
-        {({ errors, touched }) => (
-          <Form autoComplete="off">
-            <div className="space-y-5 w-full">
-              <FormInput
-                errors={errors}
-                touched={touched}
-                name="number"
-                title="Mobile Number"
-                icon="ph:phone-thin"
-                inputProps={{ disabled: isLoading, type: "number" }}
-              />
-              <FormInput
-                errors={errors}
-                touched={touched}
-                name="email"
-                title="Email"
-                icon="ph:envelope-simple-thin"
-                inputProps={{
-                  disabled: isLoading,
-                  type: "email",
-                }}
-              />
-              <FormInput
-                errors={errors}
-                touched={touched}
-                name="password"
-                title="New Password"
-                icon="material-symbols-light:lock-outline"
-                inputProps={{
-                  disabled: isLoading,
-                  type: "password",
-                }}
-              />
-              <FormInput
-                errors={errors}
-                touched={touched}
-                name="password2"
-                title="Confirm Password"
-                icon="material-symbols-light:lock-outline"
-                inputProps={{
-                  disabled: isLoading,
-                  type: "password",
-                }}
-              />
-            </div>
-            <div className="mt-8">
-              <Button disabled={isLoading} type="submit" className="w-full">
-                {!isLoading ? (
-                  "Register"
-                ) : (
-                  <span>
-                    <Icon
-                      icon="svg-spinners:90-ring-with-bg"
-                      className="text-3xl"
-                    />
-                  </span>
-                )}
-              </Button>
-            </div>
-            <div className="mt-3 text-center">
-              <p className="text-gray-500">
-                Already have an account?{" "}
-                <Link
-                  to="/login"
-                  className={cn(
-                    buttonVariants({
-                      variant: "link",
-                      className: "p-0 ml-2",
-                    })
-                  )}
-                >
-                  Login
-                </Link>
-              </p>
-            </div>
-          </Form>
-        )}
-      </Formik>
-    </div>
+  return (
+    <PageTransition>
+      {isSuccess ? (
+        <SuccessModal email={data?.email ?? "test@gmail.com"} />
+      ) : (
+        <div className="w-full space-y-10">
+          <div>
+            <h1 className="text-3xl font-semibold text-primary">
+              Create a new Account
+            </h1>
+            <p className="text-gray-500 mt-2">
+              Enter your details for new account
+            </p>
+          </div>
+          {isError ? <ErrorMessage message={errMessage} /> : null}
+          <Formik
+            initialValues={newUserInitalValues}
+            validationSchema={newUserSchema}
+            onSubmit={(values: NewUserInterface) => handleSubmit(values)}
+          >
+            {({ errors, touched }) => (
+              <Form autoComplete="off">
+                <div className="space-y-5 w-full">
+                  <FormInput
+                    errors={errors}
+                    touched={touched}
+                    name="number"
+                    title="Mobile Number"
+                    icon="ph:phone-thin"
+                    inputProps={{ disabled: isLoading, type: "number" }}
+                  />
+                  <FormInput
+                    errors={errors}
+                    touched={touched}
+                    name="email"
+                    title="Email"
+                    icon="ph:envelope-simple-thin"
+                    inputProps={{
+                      disabled: isLoading,
+                      type: "email",
+                    }}
+                  />
+                  <FormInput
+                    errors={errors}
+                    touched={touched}
+                    name="password"
+                    title="New Password"
+                    icon="material-symbols-light:lock-outline"
+                    inputProps={{
+                      disabled: isLoading,
+                      type: "password",
+                    }}
+                  />
+                  <FormInput
+                    errors={errors}
+                    touched={touched}
+                    name="password2"
+                    title="Confirm Password"
+                    icon="material-symbols-light:lock-outline"
+                    inputProps={{
+                      disabled: isLoading,
+                      type: "password",
+                    }}
+                  />
+                </div>
+                <div className="mt-8">
+                  <Button disabled={isLoading} type="submit" className="w-full">
+                    {!isLoading ? (
+                      "Register"
+                    ) : (
+                      <span>
+                        <Icon
+                          icon="svg-spinners:90-ring-with-bg"
+                          className="text-3xl"
+                        />
+                      </span>
+                    )}
+                  </Button>
+                </div>
+                <div className="mt-3 text-center">
+                  <p className="text-gray-500">
+                    Already have an account?{" "}
+                    <Link
+                      to="/login"
+                      className={cn(
+                        buttonVariants({
+                          variant: "link",
+                          className: "p-0 ml-2",
+                        })
+                      )}
+                    >
+                      Login
+                    </Link>
+                  </p>
+                </div>
+              </Form>
+            )}
+          </Formik>
+        </div>
+      )}
+    </PageTransition>
   );
 };
 

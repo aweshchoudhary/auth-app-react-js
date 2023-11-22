@@ -3,24 +3,39 @@ import Home from "@/pages/dashboard/page";
 import Login from "@/pages/auth/login/page";
 import VerifyOtp from "@/pages/auth/verify-otp/page";
 import Register from "@/pages/auth/register/page";
-import Layout from "@/pages/auth/auth.layout";
+import AuthLayout from "@/pages/auth/auth.layout";
 
 const AppRouter = () => {
   return (
-    <div>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-        <Layout>
-          <Routes>
-            <Route path="/verify-otp" element={<VerifyOtp />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-          </Routes>
-        </Layout>
-      </Router>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route
+          path="/verify-otp"
+          element={
+            <AuthLayout>
+              <VerifyOtp />
+            </AuthLayout>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <AuthLayout>
+              <Login />
+            </AuthLayout>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <AuthLayout>
+              <Register />
+            </AuthLayout>
+          }
+        />
+      </Routes>
+    </Router>
   );
 };
 
