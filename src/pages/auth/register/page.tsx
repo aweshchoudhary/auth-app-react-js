@@ -36,7 +36,7 @@ const Register = () => {
   useEffect(() => {
     if (isSuccess) {
       toast.success("User registered successfully");
-      setTimeout(() => navigate("/verify-otp", { replace: true }), 2000);
+      setTimeout(() => navigate("/login", { replace: true }), 2000);
     }
     if (isError) {
       let errData: any = error;

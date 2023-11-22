@@ -1,6 +1,13 @@
+import { Dispatch, SetStateAction } from "react";
+
 export interface UserInterface {
   number: number;
   email: string;
+}
+
+export interface PromptTypes {
+  open: boolean;
+  setOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 export interface LoginReqData {

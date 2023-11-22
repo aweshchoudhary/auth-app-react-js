@@ -1,4 +1,5 @@
 import UpdatePwdPrompt from "@/components/global/prompts/updatepwd.prompt";
+import VerifyUserPrompt from "@/components/global/prompts/verifyuser.prompt";
 import { Button } from "@/components/ui/button";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux.hooks";
 import { logOut, selectCurrentToken } from "@/redux/features/auth.slice";
@@ -12,6 +13,7 @@ const Home = () => {
   const token = useAppSelector(selectCurrentToken);
   const { data } = useGetMeQuery(null);
   const [isUpdatePwdPromptOpen, setUpdatePwdPromptOpen] = useState(false);
+  const [isVerifyUserPromptOpen, setVerifyUserPromptOpen] = useState(false);
 
   const logoutUser = () => {
     dispatch(logOut());
@@ -43,6 +45,13 @@ const Home = () => {
           <Button
             variant="outline"
             className="flex-auto"
+            onClick={() => setVerifyUserPromptOpen(true)}
+          >
+            Verify
+          </Button>
+          <Button
+            variant="outline"
+            className="flex-auto"
             onClick={() => setUpdatePwdPromptOpen(true)}
           >
             Change Password
@@ -52,6 +61,10 @@ const Home = () => {
       <UpdatePwdPrompt
         open={isUpdatePwdPromptOpen}
         setOpen={setUpdatePwdPromptOpen}
+      />
+      <VerifyUserPrompt
+        open={isVerifyUserPromptOpen}
+        setOpen={setVerifyUserPromptOpen}
       />
     </section>
   );

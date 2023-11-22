@@ -18,6 +18,7 @@ import { useAppDispatch } from "@/hooks/redux.hooks";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import ErrorMessage from "../_components/error-message";
 import PageTransition from "@/components/global/page.transition";
+import SuccessBtn from "@/components/global/button/success.btn";
 
 const Login = () => {
   const [loginUser, { isLoading, isSuccess, isError, error }] =
@@ -38,7 +39,7 @@ const Login = () => {
   useEffect(() => {
     if (isSuccess) {
       toast.success("User logged in successfully");
-      navigate("/");
+      setTimeout(() => navigate("/"), 1000);
     }
     if (isError) {
       let errData: any = error;
@@ -100,18 +101,22 @@ const Login = () => {
                 </Link>
               </div>
               <div className="mt-8">
-                <Button disabled={isLoading} type="submit" className="w-full">
-                  {!isLoading ? (
-                    "Login"
-                  ) : (
-                    <span>
-                      <Icon
-                        icon="svg-spinners:90-ring-with-bg"
-                        className="text-3xl"
-                      />
-                    </span>
-                  )}
-                </Button>
+                {isSuccess ? (
+                  <SuccessBtn>Logged In</SuccessBtn>
+                ) : (
+                  <Button disabled={isLoading} type="submit" className="w-full">
+                    {!isLoading ? (
+                      "Login"
+                    ) : (
+                      <span>
+                        <Icon
+                          icon="svg-spinners:90-ring-with-bg"
+                          className="text-3xl"
+                        />
+                      </span>
+                    )}
+                  </Button>
+                )}
               </div>
               <div className="mt-3 text-center">
                 <p className="text-gray-500">

@@ -36,11 +36,21 @@ export const authApi = mainApi.injectEndpoints({
         body: data,
       }),
     }),
-    verifyOtp: builder.mutation({
+    getOtp: builder.query<
+      { number: number; otp: string; otp_created_at: string },
+      null
+    >({
+      query: () => ({
+        url: "/users/me/verify",
+      }),
+    }),
+    verifyOtp: builder.mutation<
+      { number: number; verified: boolean },
+      { otp: string }
+    >({
       query: (data) => ({
-        url: "/users/verify",
-        method: "POST",
-        body: data,
+        url: `/users/me/verify?otp=${data.otp}`,
+        method: "PATCH",
       }),
     }),
   }),
@@ -53,4 +63,6 @@ export const {
   useGetMeQuery,
   useLazyGetMeQuery,
   useUpdatePassMutation,
+  useGetOtpQuery,
+  useLazyGetOtpQuery,
 } = authApi;
