@@ -49,7 +49,8 @@ const UpdatePwd = ({
   useEffect(() => {
     if (isSuccess) {
       toast.success("Password Changed Successfully");
-      setTimeout(() => navigate("/verify-otp", { replace: true }), 2000);
+      setTimeout(() => navigate("/", { replace: true }), 2000);
+      handleCancel();
     }
     if (isError) toast.error("Something went wrong! Try again.");
   }, [isSuccess, isError]);

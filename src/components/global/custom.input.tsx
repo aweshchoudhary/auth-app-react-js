@@ -1,4 +1,4 @@
-import { InputHTMLAttributes, useState } from "react";
+import { InputHTMLAttributes, ReactNode, useState } from "react";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { cn } from "@/lib/utils";
 import { Field } from "formik";
@@ -10,6 +10,7 @@ const CustomInput = ({
   inputProps,
   error,
   touched,
+  as,
 }: {
   icon?: string;
   name: string;
@@ -17,6 +18,7 @@ const CustomInput = ({
   inputProps?: InputHTMLAttributes<HTMLInputElement>;
   error: any;
   touched: any;
+  as?: ReactNode;
 }) => {
   const [inputFocus, setInputFocus] = useState(false);
   const [inputType, setInputType] = useState(inputProps?.type ?? "text");
@@ -49,7 +51,7 @@ const CustomInput = ({
             placeholder={title}
             onFocus={() => setInputFocus(true)}
             onBlur={() => setInputFocus(false)}
-            className="block placeholder:text-gray-600 disabled: disabled:placeholder:text-gray-400 w-full disabled:cursor-not-allowed bg-transparent outline-none"
+            className="block placeholder:text-gray-600 disabled: disabled:placeholder:text-gray-400 w-full disabled:cursor-not-allowed bg-transparent outline-none peer"
             {...inputProps}
             type={inputType}
           />
@@ -76,6 +78,7 @@ const CustomInput = ({
           placeholder={title}
           onFocus={() => setInputFocus(true)}
           onBlur={() => setInputFocus(false)}
+          as={as}
           className="block placeholder:text-gray-600 disabled: disabled:placeholder:text-gray-400 w-full disabled:cursor-not-allowed bg-transparent outline-none"
           {...inputProps}
         />

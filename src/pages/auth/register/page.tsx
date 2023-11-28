@@ -12,6 +12,8 @@ import SuccessModal from "./success.modal";
 import ErrorMessage from "../_components/error-message";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import PageTransition from "@/components/global/page.transition";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 const Register = () => {
   const [registerUser, { isLoading, isSuccess, isError, error, data }] =
@@ -72,16 +74,25 @@ const Register = () => {
             validationSchema={newUserSchema}
             onSubmit={(values: NewUserInterface) => handleSubmit(values)}
           >
-            {({ errors, touched }) => (
+            {({ errors, touched, values, setFieldValue }) => (
               <Form autoComplete="off">
                 <div className="space-y-5 w-full">
-                  <FormInput
+                  {/* <FormInput
                     errors={errors}
                     touched={touched}
                     name="number"
                     title="Mobile Number"
                     icon="ph:phone-thin"
                     inputProps={{ disabled: isLoading, type: "number" }}
+                  /> */}
+                  <PhoneInput
+                    country={"in"}
+                    value={values.number}
+                    onChange={(phone) => setFieldValue("number", phone)}
+                    containerClass="custom-input-container"
+                    inputClass="custom-input"
+                    dropdownClass="custom-input-dropdown"
+                    buttonClass="custom-input-dropdown"
                   />
                   <FormInput
                     errors={errors}

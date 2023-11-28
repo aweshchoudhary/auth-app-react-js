@@ -1,5 +1,5 @@
 import { Textarea } from "@/components/ui/textarea";
-import { InputHTMLAttributes, TextareaHTMLAttributes } from "react";
+import { InputHTMLAttributes, ReactNode, TextareaHTMLAttributes } from "react";
 import CustomInput from "./custom.input";
 import { ErrorMessage, FormikErrors, FormikTouched } from "formik";
 import { Icon } from "@iconify/react/dist/iconify.js";
@@ -13,6 +13,7 @@ interface FormInputProps {
   icon?: string;
   inputProps?: InputHTMLAttributes<HTMLInputElement>;
   textareaProps?: TextareaHTMLAttributes<HTMLTextAreaElement>;
+  as?: ReactNode;
 }
 
 const FormInput: React.FC<FormInputProps> = ({
@@ -24,6 +25,7 @@ const FormInput: React.FC<FormInputProps> = ({
   inputProps,
   textareaProps,
   icon,
+  as,
 }) => {
   return (
     <div className="w-full">
@@ -42,6 +44,7 @@ const FormInput: React.FC<FormInputProps> = ({
           icon={icon}
           error={errors[name]}
           touched={touched[name]}
+          as={as}
         />
       )}
       {errors[name] && touched[name] ? (

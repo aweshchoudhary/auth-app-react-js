@@ -2,7 +2,7 @@ const AnimatedBackground = () => {
   return (
     <div id="bg-wrap">
       <svg
-        className="lg:w-auto w-screen lg:h-screen h-[300px]"
+        className="lg:w-full w-screen lg:h-screen h-[300px]"
         viewBox="0 0 100 100"
         preserveAspectRatio="xMidYMid slice"
       >

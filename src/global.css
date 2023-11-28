@@ -68,6 +68,7 @@
 
 @layer base {
   * {
+    font-family: "Poppins", sans-serif !important;
     @apply border-border;
   }
   body {
@@ -84,5 +85,14 @@
   }
   .glossy-only {
     box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5) !important;
+  }
+  .custom-input {
+    @apply block placeholder:text-gray-600 disabled:placeholder:text-gray-400 w-full disabled:cursor-not-allowed bg-transparent border-none outline-none pl-12 h-auto text-base !important;
+  }
+  .custom-input-container {
+    @apply flex items-center rounded glossy-only sm:gap-3 gap-2 w-full bg-accent border-2 transition-all border-transparent sm:px-5 px-3 py-2 !important;
+  }
+  .custom-input-dropdown {
+    @apply border-none h-auto !important;
   }
 }
