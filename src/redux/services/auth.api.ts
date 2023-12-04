@@ -14,6 +14,7 @@ export const authApi = mainApi.injectEndpoints({
       query: () => ({
         url: "/users/me",
       }),
+      providesTags: ["user"],
     }),
     updatePass: builder.mutation<string, UpdatePassReqData>({
       query: (data) => ({
@@ -21,6 +22,7 @@ export const authApi = mainApi.injectEndpoints({
         method: "PATCH",
         body: data,
       }),
+      invalidatesTags: ["user"],
     }),
     login: builder.mutation<LoginResData, LoginReqData>({
       query: (data) => ({
@@ -52,6 +54,7 @@ export const authApi = mainApi.injectEndpoints({
         url: `/users/me/verify?otp=${data.otp}`,
         method: "PATCH",
       }),
+      invalidatesTags: ["user"],
     }),
   }),
 });

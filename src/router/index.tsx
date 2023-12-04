@@ -1,12 +1,15 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Home from "@/pages/dashboard/page";
 import Login from "@/pages/auth/login/page";
 import Register from "@/pages/auth/register/page";
 import AuthLayout from "@/pages/auth/auth.layout";
+import UsersManagementPage from "@/pages/users/page";
+import CheckAuth from "@/components/global/check.auth";
 
 const AppRouter = () => {
   return (
-    <Router>
+    <div>
+      <CheckAuth />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
@@ -25,8 +28,9 @@ const AppRouter = () => {
             </AuthLayout>
           }
         />
+        <Route path="/admin/users" element={<UsersManagementPage />} />
       </Routes>
-    </Router>
+    </div>
   );
 };
 

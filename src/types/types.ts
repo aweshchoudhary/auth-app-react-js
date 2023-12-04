@@ -3,6 +3,13 @@ import { Dispatch, SetStateAction } from "react";
 export interface UserInterface {
   number: number;
   email: string;
+  verified: boolean;
+  superuser: boolean;
+}
+export interface MakeSuperUserReqProps {
+  number: number;
+  email: string;
+  superuser: boolean;
 }
 
 export interface PromptTypes {

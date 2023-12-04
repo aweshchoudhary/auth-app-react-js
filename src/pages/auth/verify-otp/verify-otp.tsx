@@ -29,7 +29,7 @@ const VerifyOtp = ({ setOpen }: Omit<PromptTypes, "open">) => {
     }
     if (verifyOtpStatus.isError) {
       toast.error("User already verified");
-      handleCancel();
+      setTimeout(() => handleCancel(), 500);
     }
   }, [verifyOtpStatus.isSuccess, verifyOtpStatus.isError]);
 

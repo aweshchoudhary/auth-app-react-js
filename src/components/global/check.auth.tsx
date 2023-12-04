@@ -1,18 +1,19 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const CheckLogin = () => {
+const CheckAuth = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   useEffect(() => {
-    const checkLogged = () => {
-      const data = localStorage.getItem("data") ?? null;
-      if (!data && pathname !== "/login" && pathname !== "/verify-otp")
-        navigate("/register");
+    const checkAccess = () => {
+      const publicPaths = ["/login", "/verify-otp", "/register"];
+      const accessToken = localStorage.getItem("accessToken") ?? null;
+      if (!accessToken && !publicPaths.includes(pathname)) navigate("/login");
+      if (accessToken && publicPaths.includes(pathname)) navigate("/");
     };
-    checkLogged();
+    checkAccess();
   }, [pathname]);
   return <></>;
 };
 
-export default CheckLogin;
+export default CheckAuth;
