@@ -17,7 +17,6 @@ import {
 } from "@/components/ui/table";
 import UserDetailsPrompt from "./prompts/user-details-prompt";
 import { useState } from "react";
-import { PromptTypes, UserInterface } from "@/types/types";
 
 interface UsersTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];

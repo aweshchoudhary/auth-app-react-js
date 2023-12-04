@@ -1,7 +1,6 @@
 "use client";
 import { UserInterface } from "@/types/types";
 import { ColumnDef } from "@tanstack/react-table";
-import SuperUserAction from "./super-user-action";
 
 export const userColumns: ColumnDef<UserInterface>[] = [
   {

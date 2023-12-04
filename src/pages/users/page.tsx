@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react/dist/iconify.js";
 
 const UsersManagementPage = () => {
-  const { data, isLoading, isFetching, isError } = useGetUsersQuery(null);
+  const { data, isLoading, isFetching } = useGetUsersQuery(null);
   return (
     <section>
       <header className="py-5 px-10 bg-accent">
@@ -16,9 +16,15 @@ const UsersManagementPage = () => {
           <h1 className="text-xl font-semibold ">User Management</h1>
         </div>
       </header>
-      <div className="md:p-10 p-5">
-        <UsersTable columns={userColumns} data={data ?? []} />
-      </div>
+      {isLoading || isFetching ? (
+        <div className="h-screen w-screen flex items-center justify-center">
+          <Icon icon="svg-spinners:90-ring-with-bg" className="text-5xl" />
+        </div>
+      ) : (
+        <div className="md:p-10 p-5">
+          <UsersTable columns={userColumns} data={data ?? []} />
+        </div>
+      )}
     </section>
   );
 };

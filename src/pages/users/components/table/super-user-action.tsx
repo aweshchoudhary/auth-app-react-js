@@ -1,5 +1,5 @@
-import { UserInterface } from "@/types/types";
-const SuperUserAction = ({ superuser }: UserInterface) => {
+// import { UserInterface } from "@/types/types";
+const SuperUserAction = () => {
   return <div>SuperUserAction</div>;
 };
 
